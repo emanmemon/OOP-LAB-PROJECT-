@@ -134,7 +134,85 @@ public:
         repairStatus = "Resolved";
         cout << "Issue '" << issue << "' for Bus " << busNumber << " has been resolved.\n";
     }
+// Class: Staff
+class Staff : public Person {
+protected:
+    string role;
+public:
+    Staff(string n, int a, string r) : Person(n, a), role(r) {}
 
+    void displayInfo() const override {
+        cout << "Staff - ";
+        Person::displayInfo();
+        cout << "Role: " << role << endl;
+    }
+};
+
+// Class: CustomerSupport
+class CustomerSupport {
+public:
+    string query;
+    string response;
+
+    CustomerSupport(string q) : query(q), response("Pending") {}
+
+    void resolveQuery(string res) {
+        response = res;
+        cout << "Query resolved: " << response << endl;
+    }
+
+    void displayQuery() {
+        cout << "Customer Query: " << query << " - Response: " << response << endl;
+    }
+};
+
+// Class: TicketValidator
+class TicketValidator {
+public:
+    bool validateTicket(Ticket& ticket) {
+        cout << "Ticket validated successfully!\n";
+        return true;
+    }
+};
+
+// Class: ReservationSystem
+class ReservationSystem {
+public:
+    void bookTicket() {
+        BusRoute route("Islamabad", "Lahore", 300);
+        Bus bus("B001", route, 20);
+        bus.displayBusInfo();
+
+        Passenger passenger("Eman", 22);
+        int seatNum = 5;
+
+        if (bus.bookSeat(seatNum)) {
+            Ticket ticket(passenger, seatNum, 500.0);
+            ticket.displayTicket();
+
+            CardPayment payment(500.0, "1234-5678-9012-3456");
+            payment.processPayment();
+
+            TicketValidator validator;
+            validator.validateTicket(ticket);
+
+            CustomerSupport support("Lost ticket issue");
+            support.resolveQuery("Duplicate ticket issued.");
+        }
+    }
+};
+
+// Main Function
+int main() {
+    ReservationSystem system;
+    system.bookTicket();
+
+    Maintenance maintenance("B001", "Engine overheating");
+    maintenance.resolveIssue();
+    maintenance.displayStatus();
+
+    return 0;
+}
     void displayStatus() {
         cout << "Maintenance Status for Bus " << busNumber << ": " << issue << " - " << repairStatus << endl;
     }
