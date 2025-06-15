@@ -1,0 +1,93 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Base class: Person
+class Person {
+protected:
+    string name;
+    int age;
+public:
+    Person(string n, int a) : name(n), age(a) {}
+    virtual void displayInfo() const {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+// Derived class: Passenger
+class Passenger : public Person {
+public:
+    Passenger(string n, int a) : Person(n, a) {}
+    void displayInfo() const override {
+        cout << "Passenger - ";
+        Person::displayInfo();
+    }
+};
+
+// Derived class: Driver
+class Driver : public Person {
+    string licenseNumber;
+public:
+    Driver(string n, int a, string ln) : Person(n, a), licenseNumber(ln) {}
+    void displayInfo() const override {
+        cout << "Driver - ";
+        Person::displayInfo();
+        cout << "License Number: " << licenseNumber << endl;
+    }
+};
+
+// Class: BusRoute
+class BusRoute {
+public:
+    string startLocation, endLocation;
+    double distance;
+
+    BusRoute(string start, string end, double d) : startLocation(start), endLocation(end), distance(d) {}
+
+    void displayRoute() const {
+        cout << "Route: " << startLocation << " -> " << endLocation << " (Distance: " << distance << " km)\n";
+    }
+};
+
+// Class: Bus
+class Bus {
+protected:
+    string busNumber;
+    BusRoute route;
+    int totalSeats;
+    vector<bool> seats;
+public:
+    Bus(string num, BusRoute rt, int seats) : busNumber(num), route(rt), totalSeats(seats), seats(seats, true) {}
+    
+    void displayBusInfo() const {
+        cout << "Bus Number: " << busNumber << endl;
+        route.displayRoute();
+        cout << "Total Seats: " << totalSeats << endl;
+    }
+
+    bool bookSeat(int seatNum) {
+        if (seatNum > 0 && seatNum <= totalSeats && seats[seatNum - 1]) {
+            seats[seatNum - 1] = false;
+            cout << "Seat " << seatNum << " booked successfully!\n";
+            return true;
+        } else {
+            cout << "Seat is unavailable or invalid.\n";
+            return false;
+        }
+    }
+};
+
+// Class: Ticket
+class Ticket {
+protected:
+    Passenger passenger;
+    int seatNumber;
+    double fare;
+public:
+    Ticket(Passenger p, int sn, double f) : passenger(p), seatNumber(sn), fare(f) {}
+    void displayTicket() const {
+        cout << "\n--- Ticket Details ---\n";
+        passenger.displayInfo();
+        cout << "Seat Number: " << seatNumber << ", Fare: $" << fare << endl;
+    }
+};
