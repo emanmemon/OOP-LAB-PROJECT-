@@ -91,3 +91,52 @@ public:
         cout << "Seat Number: " << seatNumber << ", Fare: $" << fare << endl;
     }
 };
+Class: Payment
+class Payment {
+protected:
+    double amount;
+public:
+    Payment(double amt) : amount(amt) {}
+    virtual void processPayment() const {
+        cout << "Processing payment of $" << amount << endl;
+    }
+};
+
+// Derived class: CardPayment
+class CardPayment : public Payment {
+    string cardNumber;
+public:
+    CardPayment(double amt, string cn) : Payment(amt), cardNumber(cn) {}
+    void processPayment() const override {
+        cout << "Processing card payment of $" << amount << " using card: " << cardNumber << endl;
+    }
+};
+
+// Derived class: CashPayment
+class CashPayment : public Payment {
+public:
+    CashPayment(double amt) : Payment(amt) {}
+    void processPayment() const override {
+        cout << "Processing cash payment of $" << amount << endl;
+    }
+};
+
+// Class: Maintenance
+class Maintenance {
+public:
+    string busNumber;
+    string issue;
+    string repairStatus;
+
+    Maintenance(string num, string prob) : busNumber(num), issue(prob), repairStatus("Pending") {}
+
+    void resolveIssue() {
+        repairStatus = "Resolved";
+        cout << "Issue '" << issue << "' for Bus " << busNumber << " has been resolved.\n";
+    }
+
+    void displayStatus() {
+        cout << "Maintenance Status for Bus " << busNumber << ": " << issue << " - " << repairStatus << endl;
+    }
+};
+
