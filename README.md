@@ -1,27 +1,27 @@
 # Bus Reservation & Management System
 
-Yeh ek console-based **Bus Reservation aur Operations Management System** hai jise **C++** mein implement kiya gaya hai. Is project mein Object-Oriented Programming (OOP) ke core concepts (Inheritance, Polymorphism, Encapsulation aur Composition) ka use karke real-world bus transit system ko simulate kiya gaya hai.
+A complete, console-based **Bus Reservation and Operations Management System** implemented in **C++**. This project demonstrates core **Object-Oriented Programming (OOP)** pillars to simulate a real-world transit workflow, including dynamic seat booking, polymorphic payment gateways, passenger/staff identification, ticket validation, and fleet maintenance tracking.
 
 ---
 
-## ✨ Features 
+## ✨ Features
 
-*   **Seat Booking Engine:** Real-time seat allocation jo seat availability aur valid numbers ko check karta hai.
-*   **Polymorphic Payments:** Card aur Cash dono tarah ki payments ko abstract gateway interface ke zariye process karta hai.
-*   **Role Hierarchy:** Ek single identity foundation (`Person` class) se `Passenger`, `Driver`, aur `Staff` ke roles ko manage karta hai.
-*   **Operational Modules:** Isme Ticket Validation, Customer Support queries resolver, aur Bus Maintenance tracker shamil hain.
+*   **Seat Booking Engine:** Real-time seat allocation tracking with boundary validation and availability checks.
+*   **Polymorphic Payments:** Flexible payment infrastructure processing both Card and Cash transactions via an overridden gateway method.
+*   **Role Hierarchy:** Structured management of `Passenger`, `Driver`, and `Staff` profiles derived from a unified identity foundation (`Person` class).
+*   **Operational Modules:** Built-in modules for real-time ticket validation, customer support query resolution, and mechanical maintenance updates.
 
 ---
 
 ## 🏗️ Architecture & OOP Concepts
 
-Is project ko modular aur readable banane ke liye OOP ke pillars ka istamal kiya gaya hai:
+The application architecture utilizes clean OOP guidelines to keep the codebase modular, readable, and highly scalable:
 
 *   **Inheritance & Polymorphism:** 
-    *   `Person` ek base class hai jise `Passenger`, `Driver`, aur `Staff` inherit karte hain aur runtime polymorphism ke liye `displayInfo()` method ko override karte hain.
-    *   `Payment` ek base class hai jise `CardPayment` aur `CashPayment` override karke apni specific implementation chalate hain.
-*   **Composition:** `Bus` class ke andar `BusRoute` ka object use kiya gaya hai taake har bus ke paas apna specific route map majood ho.
-*   **Encapsulation:** Data elements (jaise seats vector, card numbers, age) ko `protected` ya `private` access modifiers ke andar safe rakha gaya hai aur unhe public functions ke zariye access kiya jata hai.
+    *   `Person` acts as the central base class. `Passenger`, `Driver`, and `Staff` extend it and override the `displayInfo()` method for runtime polymorphic execution.
+    *   `Payment` serves as a parent model overridden by `CardPayment` and `CashPayment` to run specific transactional logic.
+*   **Composition:** The `Bus` class encapsulates a distinct `BusRoute` object instance to tightly couple each fleet vehicle to its dedicated pathway coordinates and distances.
+*   **Encapsulation:** Critical attributes (such as seating vectors, credit card numbers, and active system statuses) are hidden using `protected` or `private` scopes and altered only through secure public member methods.
 
 ### System Class Structure
 
@@ -39,20 +39,20 @@ graph TD
 
 ---
 
-## 🚀 How to Run (Chalanay ka Tariqa)
+## 🚀 How to Run
 
 ### Prerequisites
-Aapke system par koi bhi modern C++ compiler (jaise GCC/G++ ya Clang) installed hona chahiye jo **C++11** ya usse higher version support kare.
+To compile and run this program, you will need a compiler that supports **C++11** or a newer release (such as GCC/G++ or Clang).
 
 ### Compilation
-Apne code ko `main.cpp` file ke naam se save karein aur terminal par yeh command chalayein:
+Save your source code into a file named `main.cpp` and compile using your command line terminal:
 
 ```bash
 g++ -std=c++11 main.cpp -o BusReservationSystem
 ```
 
 ### Execution
-Program ko run karne ke liye yeh command likhein:
+Execute the compiled binary executable using the following command:
 
 ```bash
 ./BusReservationSystem
@@ -60,9 +60,9 @@ Program ko run karne ke liye yeh command likhein:
 
 ---
 
-## 📊 Sample Output 
+## 📊 Sample Output
 
-Jab aap is program ko run karenge, to console par kuch aisa flow dikhega:
+Upon execution, the project runs through a programmatic simulation test loop producing the following console log:
 
 ```text
 Bus Number: B001
