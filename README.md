@@ -1,68 +1,97 @@
-# Bus Reservation & Management System
+# 🚌 Bus Reservation & Management System
 
-A complete, console-based **Bus Reservation and Operations Management System** implemented in **C++**. This project demonstrates core **Object-Oriented Programming (OOP)** pillars to simulate a real-world transit workflow, including dynamic seat booking, polymorphic payment gateways, passenger/staff identification, ticket validation, and fleet maintenance tracking.
+![C++ Version](https://shields.io)
+![OOP Pillars](https://shields.io)
+![Build](https://shields.io)
 
----
-
-## ✨ Features
-
-*   **Seat Booking Engine:** Real-time seat allocation tracking with boundary validation and availability checks.
-*   **Polymorphic Payments:** Flexible payment infrastructure processing both Card and Cash transactions via an overridden gateway method.
-*   **Role Hierarchy:** Structured management of `Passenger`, `Driver`, and `Staff` profiles derived from a unified identity foundation (`Person` class).
-*   **Operational Modules:** Built-in modules for real-time ticket validation, customer support query resolution, and mechanical maintenance updates.
+A complete, console-based **Transit Operations Engine** implemented in modern C++. This project framework simulates an enterprise-level public transport or commercial fleet system. It demonstrates structural software design principles to decouple scheduling, financial processing, passenger identities, and physical vehicle asset health.
 
 ---
 
-## 🏗️ Architecture & OOP Concepts
+## 🎨 Architectural Blueprint
 
-The application architecture utilizes clean OOP guidelines to keep the codebase modular, readable, and highly scalable:
-
-*   **Inheritance & Polymorphism:** 
-    *   `Person` acts as the central base class. `Passenger`, `Driver`, and `Staff` extend it and override the `displayInfo()` method for runtime polymorphic execution.
-    *   `Payment` serves as a parent model overridden by `CardPayment` and `CashPayment` to run specific transactional logic.
-*   **Composition:** The `Bus` class encapsulates a distinct `BusRoute` object instance to tightly couple each fleet vehicle to its dedicated pathway coordinates and distances.
-*   **Encapsulation:** Critical attributes (such as seating vectors, credit card numbers, and active system statuses) are hidden using `protected` or `private` scopes and altered only through secure public member methods.
-
-### System Class Structure
+The application design is decoupled into decoupled logic layers utilizing strict object-oriented frameworks to guarantee clean memory state transitions:
 
 ```mermaid
 graph TD
-    Person --> Passenger
-    Person --> Driver
-    Person --> Staff
-    Payment --> CardPayment
-    Payment --> CashPayment
-    BusRoute --> Bus
-    Bus --> ReservationSystem
-    Ticket --> ReservationSystem
+    %% Base Classes
+    Person[👤 Person Base Class]
+    Payment[💳 Payment Gateway Base]
+    
+    %% Inherited Person Entities
+    Person --> Passenger[乘客 Passenger]
+    Person --> Driver[🪪 Driver Entity]
+    Person --> Staff[🛠️ Admin Staff]
+    
+    %% Inherited Payment Methods
+    Payment --> CardPayment[🔒 Encrypted Card Processing]
+    Payment --> CashPayment[💵 Ledger Cash Processing]
+    
+    %% Structural Composition
+    BusRoute[📍 BusRoute Data Object] -->|Composed Inside| Bus[🚍 Core Bus Engine]
+    
+    %% Systems Orchestration
+    Bus --> ReservationSystem[⚙️ ReservationSystem Orchestrator]
+    Ticket[🎟️ Ticket Validation Data Model] --> ReservationSystem
+    
+    style Person fill:#f9f,stroke:#333,stroke-width:2px
+    style Payment fill:#bbf,stroke:#333,stroke-width:2px
+    style Bus fill:#bfb,stroke:#333,stroke-width:2px
 ```
 
 ---
 
-## 🚀 How to Run
+## ⚡ Core Operational Features
+
+### 👥 Polmorphic Identity Matrix
+*   **Unified Base Identity:** Derives specific operational nodes (`Passenger`, `Driver`, `Staff`) from a single `Person` schema.
+*   **Dynamic Overrides:** Resolves string metadata buffers down dynamically at run-time using virtual table referencing (`displayInfo`).
+
+### 🎫 State-Safe Booking Engine
+*   **Vector State Map:** Uses thread-safe index validation logic within tracking matrices (`vector<bool>`) to allocate seating states.
+*   **Boundary Checking:** Protects arrays against segmentation out-of-bound requests during dynamic check-ins.
+
+### 💳 Abstracted Financial Gateway
+*   **Polymorphic Processors:** Accepts discrete dynamic models (`CardPayment`, `CashPayment`) safely underneath unified transactional base reference parameters.
+
+### 🛠️ Fleet Operations & Support Logs
+*   **State Machine Trackers:** Features standalone diagnostic hooks to transition mechanical issues from `Pending` into a validated `Resolved` state architecture.
+
+---
+
+## 🏗️ Technical Implementation Breakdown
+
+| OOP Principle | Code Implementation Strategy | System Component Impact |
+| :--- | :--- | :--- |
+| **Inheritance** | Hierarchical extension of target base schemas (`Person`, `Payment`). | Code reuse optimization; centralized profile debugging metrics. |
+| **Polymorphism** | Runtime lookups via `virtual void displayInfo() const override`. | Allows abstract collections of human assets to safely self-report data. |
+| **Composition** | `BusRoute` strictly instantiated directly within structural properties of `Bus`. | Strong life-cycle grouping; route coordinates cannot outlive the vehicle scope. |
+| **Encapsulation** | Strict internal isolation of array data fields using `protected:` visibilities. | Protects financial accounts and vector registers from out-of-scope mutations. |
+
+---
+
+## 🚀 Deployment Guide
 
 ### Prerequisites
-To compile and run this program, you will need a compiler that supports **C++11** or a newer release (such as GCC/G++ or Clang).
+A platform terminal configuration embedding a production-ready **ISO C++11 compliant compiler engine** (e.g., GCC/G++ `>= 4.8.1` or Clang equivalents).
 
-### Compilation
-Save your source code into a file named `main.cpp` and compile using your command line terminal:
-
+### Compilation Pipeline
+Fire your systems terminal utility down to the source execution root and dispatch the building sequence:
 ```bash
-g++ -std=c++11 main.cpp -o BusReservationSystem
+g++ -std=c++11 main.cpp -o TransitOperationsEngine
 ```
 
-### Execution
-Execute the compiled binary executable using the following command:
-
+### Execution Launch
+Trigger the operational runtime engine:
 ```bash
-./BusReservationSystem
+./TransitOperationsEngine
 ```
 
 ---
 
-## 📊 Sample Output
+## 📊 Standard Runtime Verification Log
 
-Upon execution, the project runs through a programmatic simulation test loop producing the following console log:
+Upon manual system boot tracking, the simulation fires internal checks, outputs memory verification parameters, logs a booking sequence, confirms card tracking numbers, and addresses fleet health states:
 
 ```text
 Bus Number: B001
