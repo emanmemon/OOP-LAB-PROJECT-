@@ -60,7 +60,7 @@ Program ko run karne ke liye yeh command likhein:
 
 ---
 
-## 📊 Sample Output (Umeed-shuda Output)
+## 📊 Sample Output 
 
 Jab aap is program ko run karenge, to console par kuch aisa flow dikhega:
 
