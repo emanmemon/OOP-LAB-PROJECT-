@@ -4,7 +4,7 @@ Yeh ek console-based **Bus Reservation aur Operations Management System** hai ji
 
 ---
 
-## ✨ Features (Khususiyaat)
+## ✨ Features 
 
 *   **Seat Booking Engine:** Real-time seat allocation jo seat availability aur valid numbers ko check karta hai.
 *   **Polymorphic Payments:** Card aur Cash dono tarah ki payments ko abstract gateway interface ke zariye process karta hai.
