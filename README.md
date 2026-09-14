@@ -1,88 +1,90 @@
-# 🚌 Bus Reservation & Management System
+# 🚍 Live Bus Reservation & Management System
 
 ![C++ Version](https://shields.io)
-![OOP Pillars](https://shields.io)
-![Build](https://shields.io)
+![Build Status](https://shields.io)
+![Interface](https://shields.io)
 
-A complete, console-based **Transit Operations Engine** implemented in modern C++. This project framework simulates an enterprise-level public transport or commercial fleet system. It demonstrates structural software design principles to decouple scheduling, financial processing, passenger identities, and physical vehicle asset health.
+A highly responsive, console-based **Transit Operations Engine** written in C++. This project framework leverages advanced **Object-Oriented Programming (OOP)** patterns to simulate a live transit authority network—featuring continuous transaction processing, real-time state tracking, and reactive diagnostic mechanics.
 
 ---
 
-## 🎨 Architectural Blueprint
+## 🎭 System Operations Workflow (Live View)
 
-The application design is decoupled into decoupled logic layers utilizing strict object-oriented frameworks to guarantee clean memory state transitions:
+Below is the live operational workflow of the orchestration engine. 
 
 ```mermaid
-graph TD
-    %% Base Classes
-    Person[👤 Person Base Class]
-    Payment[💳 Payment Gateway Base]
-    
-    %% Inherited Person Entities
-    Person --> Passenger[乘客 Passenger]
-    Person --> Driver[🪪 Driver Entity]
-    Person --> Staff[🛠️ Admin Staff]
-    
-    %% Inherited Payment Methods
-    Payment --> CardPayment[🔒 Encrypted Card Processing]
-    Payment --> CashPayment[💵 Ledger Cash Processing]
-    
-    %% Structural Composition
-    BusRoute[📍 BusRoute Data Object] -->|Composed Inside| Bus[🚍 Core Bus Engine]
-    
-    %% Systems Orchestration
-    Bus --> ReservationSystem[⚙️ ReservationSystem Orchestrator]
-    Ticket[🎟️ Ticket Validation Data Model] --> ReservationSystem
-    
-    style Person fill:#f9f,stroke:#333,stroke-width:2px
-    style Payment fill:#bbf,stroke:#333,stroke-width:2px
-    style Bus fill:#bfb,stroke:#333,stroke-width:2px
+sequenceDiagram
+    autonumber
+    actor P as 👤 Passenger (Eman)
+    participant RS as ⚙️ Reservation System
+    participant B as 🚍 Bus Fleet Engine
+    participant GW as 💳 Payment Gateway
+    participant MV as 🛠️ Maintenance Engine
+
+    Note over P, MV: System Inits & Boots Diagnostic Chains
+    P->>RS: 1. Requests Booking (Seat 5)
+    activate RS
+    RS->>B: 2. Query Seating Vector State
+    activate B
+    B-->>RS: Seat Available! (Update Vector Index -> false)
+    deactivate B
+    RS->>GW: 3. Dispatch Encrypted Payment ($500 via Card)
+    activate GW
+    GW-->>RS: Payment Capture Success (Status: 200)
+    deactivate GW
+    RS-->>P: 4. Generate & Print Validated Dynamic Ticket
+    deactivate RS
+
+    Note over B, MV: Background Async Simulation Task
+    MV->>MV: Detects Asset Fault: 'Engine Overheating'
+    MV->>MV: Execute State Change: Pending ➔ Resolved ✅
 ```
 
 ---
 
-## ⚡ Core Operational Features
+## ⚡ Core Animated System Modules
 
-### 👥 Polmorphic Identity Matrix
-*   **Unified Base Identity:** Derives specific operational nodes (`Passenger`, `Driver`, `Staff`) from a single `Person` schema.
-*   **Dynamic Overrides:** Resolves string metadata buffers down dynamically at run-time using virtual table referencing (`displayInfo`).
+<details open>
+<summary><b>🟢 Click to Expand: Dynamic Class Matrix</b></summary>
+
+### 👥 Polymorphic Identity Matrix
+*   **Unified Base Identity:** Derives operational profiles (`Passenger`, `Driver`, `Staff`) dynamically from a shared `Person` runtime schema.
+*   **Dynamic Overrides:** Utilizes virtual tables (`vtable`) to safely resolve user characteristics without performance overhead.
 
 ### 🎫 State-Safe Booking Engine
-*   **Vector State Map:** Uses thread-safe index validation logic within tracking matrices (`vector<bool>`) to allocate seating states.
-*   **Boundary Checking:** Protects arrays against segmentation out-of-bound requests during dynamic check-ins.
+*   **Vector State Map:** Uses strict tracking matrices (`std::vector<bool>`) to allocate, lock, and free seating allocations interactively.
+*   **Boundary Control:** Actively drops bad out-of-bound requests before data streams execute.
 
 ### 💳 Abstracted Financial Gateway
-*   **Polymorphic Processors:** Accepts discrete dynamic models (`CardPayment`, `CashPayment`) safely underneath unified transactional base reference parameters.
-
-### 🛠️ Fleet Operations & Support Logs
-*   **State Machine Trackers:** Features standalone diagnostic hooks to transition mechanical issues from `Pending` into a validated `Resolved` state architecture.
+*   **Polymorphic Pipelines:** Dynamically morphs operational paths between card-encrypted transactions and localized physical cash ledgers on the fly.
+</details>
 
 ---
 
-## 🏗️ Technical Implementation Breakdown
+## 🏗️ Technical Architecture Breakdown
 
-| OOP Principle | Code Implementation Strategy | System Component Impact |
+| OOP Principle | Design Pattern Implementation | Visual System Impact |
 | :--- | :--- | :--- |
-| **Inheritance** | Hierarchical extension of target base schemas (`Person`, `Payment`). | Code reuse optimization; centralized profile debugging metrics. |
-| **Polymorphism** | Runtime lookups via `virtual void displayInfo() const override`. | Allows abstract collections of human assets to safely self-report data. |
-| **Composition** | `BusRoute` strictly instantiated directly within structural properties of `Bus`. | Strong life-cycle grouping; route coordinates cannot outlive the vehicle scope. |
-| **Encapsulation** | Strict internal isolation of array data fields using `protected:` visibilities. | Protects financial accounts and vector registers from out-of-scope mutations. |
+| **Inheritance** | Structural extension of target schemas (`Person`, `Payment`). | Core reuse; reduces memory allocation sprawl. |
+| **Polymorphism** | Runtime lookups via `virtual void displayInfo() const override`. | Allows disparate human entity classes to self-report safely. |
+| **Composition** | `BusRoute` embedded as an initialization asset inside `Bus`. | High lifecycle coupling; paths drop out if the asset drops out. |
+| **Encapsulation**| Isolation of sensitive vector buffers using `protected:` access bounds. | Halts unsafe out-of-scope system modifications dead. |
 
 ---
 
-## 🚀 Deployment Guide
+## 🚀 Terminal Deployment Pipeline
 
 ### Prerequisites
-A platform terminal configuration embedding a production-ready **ISO C++11 compliant compiler engine** (e.g., GCC/G++ `>= 4.8.1` or Clang equivalents).
+Ensure your native machine terminal environment includes an active **ISO C++11 compliant compiler engine** (e.g., GCC/G++ `>= 4.8.1` or modern Clang).
 
 ### Compilation Pipeline
-Fire your systems terminal utility down to the source execution root and dispatch the building sequence:
+Open your development directory terminal and run the compilation layer:
 ```bash
 g++ -std=c++11 main.cpp -o TransitOperationsEngine
 ```
 
 ### Execution Launch
-Trigger the operational runtime engine:
+Launch the system engine instance:
 ```bash
 ./TransitOperationsEngine
 ```
@@ -91,7 +93,7 @@ Trigger the operational runtime engine:
 
 ## 📊 Standard Runtime Verification Log
 
-Upon manual system boot tracking, the simulation fires internal checks, outputs memory verification parameters, logs a booking sequence, confirms card tracking numbers, and addresses fleet health states:
+When booted, the system runs an automated suite test, generates validation structures, asserts payment processing success states, and sweeps fleet asset logs:
 
 ```text
 Bus Number: B001
